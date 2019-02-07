@@ -1,0 +1,9 @@
+mkdir -p testdir && cd testdir
+for c in 10 100 1000 10000 100000 1000000 ; do
+    echo "Making $c files"
+    mkdir -p many_small_${c} && pushd many_small_${c}
+    for i in `seq 1 ${c}` ; do 
+        touch test_${i}.dat
+    done
+    popd
+done
