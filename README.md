@@ -1,12 +1,16 @@
-# w-utils  (DRAFT)
+# w-utils
 
 The worst implementations of some userland utilities, created by Will Rosecrans for educational purposes.
 
 Not intended for production use.
 
-This software will probably be released under the Apache 2 license, pending review.
+This software is released under the Apache 2 license.
 
 Released in conjunction with a talk at the SoCal Linux Expo, "Lost in Userland" :  https://www.socallinuxexpo.org/scale/17x/presentations/lost-userland
+
+A blog post with a link to the slides is at https://willrosecrans.wordpress.com/2019/03/09/lost-in-userland-talk-at-scale17x/
+
+Scroll down a bit if you want to skip over the history lesson and get straight to build and run instructions.
 
 # Userland?
 
@@ -56,12 +60,32 @@ Building with CMake is straightforward, if you are lucky.
 If you are unlucky, you may wish to consult some CMake documentation: https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/  Or not.  Nothing makes you appreciate old-school Makefiles like reading CMake documentation.
 
 
-I am very lazy, and these are simple proof-of-concept utilities for demonstration purposes.  I am making no effort to be fully compliant with all your favorite Posix or GNU command line flags.  Some modern C++ language features make parts of the code much shorter and easier to write that the classical implementations.  (And thus, probably easier to read due to brevity.)  They do just enough to make for an interesting comparison with GNU and BSD utilities.
+I am very lazy, and these are simple proof-of-concept utilities for demonstration purposes.  I am making no effort to be fully compliant with all your favorite Posix or GNU command line flags.  Some modern C++ language features make parts of the code much shorter and easier to write that the classical implementations.  (And thus, probably easier to read.  Brevity FTW)  They do just enough to make for an interesting comparison with GNU and BSD utilities.
 
 I have also adopted a simple mechanism for pluggable implementations to simplify benchmarking if you want to try something different.  Just add your function to the "methods" object in main() for cp or ls by adding
 
     methods["foo"] = name_of_my_function;
     
 And it will automatically start appearing in the output of `ls --help` and be selectable with `ls --method foo`
+So if you want to hack on it with some other variations of implementation details, it may be a more convenient place to test out an idea than the more complex GNU coreutils versions.
 
+
+
+# License for the code in this repository
+
+
+
+   Copyright 2019, Will Rosecrans
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 
